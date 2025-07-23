@@ -1,0 +1,11 @@
+flowchart TD
+  Investor-->Router
+  Router--small-->Swift
+  Router--large-->Scale
+  Swift--burns GDCP-->X[Destroyed]
+  Guggenheim--transfers USDXT-->Swift
+  Swift--forwards USDXT-->Investor
+  Guggenheim--wire USD-->XFT
+  XFT--confirms wire-->Scale
+  Scale--mints USDXT-->Investor
+  Scale--releases GDCP-->Guggenheim
