@@ -1,0 +1,8 @@
+flowchart TD
+  Investor-->Router
+  Router--small-->BurnEscrow
+  Router--large-->MintEscrow
+  BurnEscrow--USDXT-->Investor
+  Guggenheim--wire USD-->MintEscrow
+  MintEscrow--USDXT-->Investor
+  MintEscrow--GDCP-->Guggenheim
