@@ -1,0 +1,12 @@
+flowchart TD
+    A[Investor] --> B[Send GDCP to Contract]
+    B --> C{Small or Large}
+    
+    C -->|Small| D[Guggenheim sends USDXT to XFT]
+    D --> E[XFT forwards USDXT to Investor]
+    E --> F[Contract burns GDCP]
+    
+    C -->|Large| G[Guggenheim sends USD wire to XFT]
+    G --> H[XFT mints USDXT to Investor]
+    H --> I[XFT sends GDCP to Guggenheim]
+    I --> J[Guggenheim burns GDCP]
