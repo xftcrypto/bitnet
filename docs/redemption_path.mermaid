@@ -1,0 +1,27 @@
+flowchart TD
+    User[Investor holds GDCP] --> Request[Redemption Request]
+    Request --> Router{XFTAssetSwaps<br/>Router}
+    
+    Router -->|Small| Transfer[XFTTransferEscrow]
+    Router -->|Large| Mint[XFTMintEscrow]
+    Router -->|Off-chain| Redemption[XFTRedemptionEscrow]
+    
+    Transfer --> T1[User deposits GDCP]
+    T1 --> T2[Contract transfers USDXT<br/>from reserves]
+    T2 --> T3[User receives USDXT]
+    T3 --> T4[Guggenheim burns GDCP]
+    
+    Mint --> M1[User deposits GDCP]
+    M1 --> M2[XFT confirms]
+    M2 --> M3[Contract sends GDCP to Guggenheim]
+    M3 --> M4[Contract mints fresh USDXT]
+    M4 --> M5[User receives USDXT]
+    
+    Redemption --> R1[User sends GDCP to XFT]
+    R1 --> R2[Guggenheim sends USD/USDXT to XFT]
+    R2 --> R3[XFT mints/transfers USDXT to User]
+    R3 --> R4[Guggenheim burns GDCP]
+    
+    T4 --> Complete[Complete]
+    M5 --> Complete
+    R4 --> Complete
