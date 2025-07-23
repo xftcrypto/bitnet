@@ -1,0 +1,11 @@
+flowchart TD
+  Investor-->Router
+  Router--small-->BurnEscrow
+  Router--large-->MintEscrow
+  BurnEscrow--burns GDCP-->X[Destroyed]
+  Guggenheim--USDXT-->XFT
+  XFT--USDXT-->Investor
+  Guggenheim--wire USD-->XFT
+  XFT--mints USDXT-->Investor
+  XFT--releases GDCP-->Guggenheim
+  MintEscrow--holds GDCP-->XFT
