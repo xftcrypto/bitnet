@@ -1,0 +1,11 @@
+flowchart TD
+  Investor-->Router
+  Router--small-->Swift
+  Router--large-->Scale
+  Swift--burns fund units-->X[Destroyed]
+  MutualFund--transfers USDXT-->Swift
+  Swift--forwards USDXT-->Investor
+  MutualFund--wire USD-->XFT
+  XFT--confirms wire-->Scale
+  Scale--mints USDXT-->Investor
+  Scale--releases fund units-->MutualFund
