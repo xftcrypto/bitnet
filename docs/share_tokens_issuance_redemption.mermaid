@@ -1,0 +1,26 @@
+sequenceDiagram
+   participant Customer
+   participant Blockchain
+   participant XFT
+   participant Alpaca
+
+   Note over Customer, Alpaca: Issuance
+   
+   Customer->>Blockchain: Escrow funds and submit order
+   Blockchain->>XFT: Forward order
+   XFT->>Alpaca: Submit order
+   Alpaca->>Alpaca: Fill order
+   Alpaca->>XFT: Notify completion
+   XFT->>Blockchain: Fill order
+   Blockchain->>Customer: Mint share tokens
+
+   Note over Customer, Alpaca: Redemption
+   
+   Customer->>Blockchain: Escrow share tokens and submit order
+   Blockchain->>XFT: Forward order
+   XFT->>Alpaca: Submit order
+   Alpaca->>Alpaca: Fill order
+   Alpaca->>XFT: Notify completion
+   XFT->>Blockchain: Fill order
+   Blockchain->>Blockchain: Burn share tokens
+   Blockchain->>Customer: Transfer funds
